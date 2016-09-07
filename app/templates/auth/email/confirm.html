@@ -1,6 +1,6 @@
 <p>Dear {{user.username}},</p>
 <p>Welcome <b>Flasky</b>!</p>
-<p>To confirm your account please<a href="{{url_for('auth.confirm', token=token, _external=True)}}">clique here</a>.</p>
+<p>To confirm your account please <a href="{{url_for('auth.confirm', token=token, _external=True)}}">clique here</a>.</p>
 <p>Alternatievely, you can paste following link in your browser's adress bar:</p>
 <p>{{url_for('auth.confirm', token=token, _external=True)}}</p>
 <p>Sincerely,</p>
