@@ -1,6 +1,7 @@
 from flask import render_template, redirect, abort, url_for, flash
 from flask_login import login_required, current_user
 from . import main
+from .. import db
 from .forms import EditProfileForm, EditProfileAdminForm
 from ..models import User, Role
 from ..decorators import admin_required
@@ -31,7 +32,7 @@ def edit_profile():
         return redirect(url_for('.user', username=current_user.username))
     form.name.data = current_user.name
     form.location.data = current_user.location
-    form about_me.data = current_user.about_me
+    form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', form=form)
 
 

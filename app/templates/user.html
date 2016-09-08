@@ -19,7 +19,7 @@
             </p>
             {% endif %}
 
-            {% if current_user.is_administrador() %}
+            {% if current_user.is_administrator() %}
             <p><a href="mailto:{{ user.email }}">{{user.email}}</a></p>
             {% endif %}
 
