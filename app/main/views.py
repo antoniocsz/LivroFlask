@@ -16,8 +16,9 @@ def index():
         db.session.add(post)
         return redirect(url_for('.index'))
     page = request.args.get('page', 1, type=int)
-    pagination = Post.query.order_by(Post.timestamp.desc().paginate(
-        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False))
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
+        error_out=False)
     posts = pagination.items
     return render_template('index.html', form=form, posts=posts, pagination=pagination)
 
@@ -26,8 +27,9 @@ def index():
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
-    pagination = Post.query.order_by(Post.timestamp.desc().paginate(
-        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'], error_out=False))
+    pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
+        error_out=False)
     posts = pagination.items
     return render_template('user.html', form=form, posts=posts, pagination=pagination)
 
