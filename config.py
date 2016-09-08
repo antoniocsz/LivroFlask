@@ -13,6 +13,7 @@ class Config:
     FLASKY_MAIL_SUBJECT_PREFIX = '[PyCoffee]'
     FLASKY_MAIL_SENDER = 'Antonio Santana <antcesar.santana2@gmail.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+    FLASKY_POSTS_PER_PAGE = 20
 
     @staticmethod
     def init_app(app):
