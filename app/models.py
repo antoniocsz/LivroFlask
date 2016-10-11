@@ -203,10 +203,10 @@ class User(UserMixin, db.Model):
         if f :
             self.followed.remove(f)
 
-    def if_following(self, user):
+    def is_following(self, user):
         return self.followed.filter_by(followed_id=user.id).first() is not None
 
-    def if_followed_by(self, user):
+    def is_followed_by(self, user):
         return self.followers.filter_by(follower_id=user.id).first() is not None
 
     def __repr__(self):
