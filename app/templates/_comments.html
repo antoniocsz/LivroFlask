@@ -12,12 +12,25 @@
                 <a href="{{ url_for('.user', username=comment.author.username) }}">{{ comment.author.username }}</a>
             </div>
             <div class="comment-body">
-                {% if comment.body_html %}
-                    {{ comment.body_html | safe }}
-                {% else %}
-                    {{ comment.body }}
+                {% if comment.disabled %}
+                <p><i>This comment has been disabled by a moderator.</i></p>
+                {% endif %}
+                {% id moderate or not comment.disabled %}
+                    {% if comment.body_html %}
+                        {{ comment.body_html | safe }}
+                    {% else %}
+                        {{ comment.body }}
+                    {% endif %}
                 {% endif %}
             </div>
+            {% if moderate %}
+                <br>
+                {% if comment.disabled %}
+                <a href="{{url_for('.moderate_enable', id=comment.id, page=page) }}" class="btn btn-default btn-xs">Enable</a>
+                {% else %}
+                <a href="{{url_for('.moderate_disable', id=comment.id, page=page) }}" class="btn btn-default btn-xs">Disable</a>
+                {% endif %}
+            {% endif %}
         </div>
     </li>
     {% endfor %}
